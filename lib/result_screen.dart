@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'data/questions.dart';
 import 'questions_summary.dart';
 
+/// Represents the Results Screen showing the result
 class ResultScreen extends StatelessWidget {
   const ResultScreen({
     super.key,
     required this.chosenAnswers,
+    required this.restartQuiz,
   });
 
   final List<String> chosenAnswers;
@@ -23,10 +26,13 @@ class ResultScreen extends StatelessWidget {
     return summary;
   }
 
+  final void Function() restartQuiz;
+
+  /// Builds the results screen and displays all the nessesary information
   @override
   Widget build(BuildContext context) {
     final summaryData = getSummaryData();
-    final numberTotalQuestions = questions.length;
+    final numTotalQuestions = questions.length;
     final numCorrecetQuestions = summaryData.where((data) {
       return data['user_answer'] == data['correct_answer'];
     }).length;
@@ -39,15 +45,26 @@ class ResultScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'You answerd $numCorrecetQuestions out of $numberTotalQuestions questions correctly',
+              'You answerd $numCorrecetQuestions out of $numTotalQuestions questions correctly',
+              style: GoogleFonts.lato(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 30),
             QuestionsSummary(summaryData),
             const SizedBox(
               height: 30,
             ),
-            TextButton(
-              onPressed: () {},
+            OutlinedButton(
+              onPressed: () {
+                restartQuiz();
+              },
+              style: OutlinedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(176, 1, 69, 124),
+                foregroundColor: Colors.white,
+              ),
               child: const Text('Restart Quiz'),
             )
           ],

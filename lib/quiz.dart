@@ -4,6 +4,7 @@ import 'questions_screen.dart';
 import 'result_screen.dart';
 import 'start_screen.dart';
 
+/// Represents the main Quiz App and its functionality
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
 
@@ -13,6 +14,7 @@ class Quiz extends StatefulWidget {
   }
 }
 
+/// Quiz State to activly change the image represented on the app
 class _QuizState extends State<Quiz> {
   List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
@@ -23,6 +25,8 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  /// Stores the answers choosen, and changes the screen when
+  /// the total number of question is reached.
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
     if (selectedAnswers.length == questions.length) {
@@ -33,6 +37,15 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  /// Restarts the quiz and resets answers selected previously.
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = 'start-screen';
+    });
+  }
+
+  /// Builds the main quiz app with all of its different screens.
   @override
   Widget build(context) {
     Widget screenWidget = StartScreen(switchScreen);
@@ -46,6 +59,7 @@ class _QuizState extends State<Quiz> {
     if (activeScreen == 'result-screen') {
       screenWidget = ResultScreen(
         chosenAnswers: selectedAnswers,
+        restartQuiz: restartQuiz,
       );
     }
 
