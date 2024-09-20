@@ -1,5 +1,8 @@
 import '/models/quiz_question.dart';
 
+/// .dart file including all questions for the quiz app.
+///
+///  Note that the first answer in the list is the correct one.
 const questions = [
   QuizQuestion(
     'What are the main building blocks of Flutter UIs?',

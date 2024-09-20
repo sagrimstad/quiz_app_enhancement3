@@ -1,3 +1,4 @@
+/// Class to shuffle quiz questions
 class QuizQuestion {
   const QuizQuestion(this.text, this.answers);
 

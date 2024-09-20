@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'answer_button.dart';
 import 'data/questions.dart';
 
+/// Represents the question screen where the quiz questions are represented
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key, required this.onSelectAnswer});
 
@@ -14,9 +15,11 @@ class QuestionsScreen extends StatefulWidget {
   }
 }
 
+/// State class for the question screen
 class _QuestionsScreenState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
 
+  /// Method to keep track of number of questions answered.
   void answerQuestion(String answer) {
     widget.onSelectAnswer(answer);
     setState(() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Represents the summary screen at the end of the quiz
 class QuestionsSummary extends StatelessWidget {
   const QuestionsSummary(this.summaryData, {super.key});
 

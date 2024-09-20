@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Represtens a button where the user answers.
 class AnswerButton extends StatelessWidget {
   const AnswerButton(this.answerText, this.onTap, {super.key});
 

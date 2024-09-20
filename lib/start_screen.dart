@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Represents the start screen of the quiz app
 class StartScreen extends StatelessWidget {
   const StartScreen(this.startQuiz, {super.key});
 
